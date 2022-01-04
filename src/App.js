@@ -1,25 +1,55 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Switch, Route, Link } from 'react-router-dom';
+import { Layout, Typography, Space } from 'antd';
+import { Navbar,Homepage, CryptoDetails, Cryptocurrencies, News , Exchanges } from './components'
+import "./App.css";
 
-function App() {
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+
+      <div className="navbar">
+        <Navbar />
+      </div>
+      <div className="main">
+        <Layout>
+
+          <div className="routes">
+            <Switch>
+
+              <Routes ecact path="/">
+                <Homepage />
+              </Routes>
+
+              <Routes ecact path="/exchanges">
+                <Exchanges />
+              </Routes>
+
+              <Routes ecact path="/cryptocurrencies">
+                <Cryptocurrencies />
+              </Routes>
+
+              <Routes ecact path="/crypto/:coinId">
+                <CryptoDetails />
+              </Routes>
+
+              <Routes ecact path="/news">
+                <News />
+              </Routes>
+
+
+            </Switch>
+
+          </div>
+
+        </Layout>
+
+
+      </div>
+      <div className="footer"></div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
