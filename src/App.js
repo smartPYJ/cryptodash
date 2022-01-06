@@ -1,8 +1,10 @@
 import React from 'react';
-import { Switch, Route, Link } from 'react-router-dom';
+import { Switch, Routes, Route, Link } from 'react-router-dom';
 import { Layout, Typography, Space } from 'antd';
-import { Navbar,Homepage, CryptoDetails, Cryptocurrencies, News , Exchanges } from './components'
+import { Navbar, Homepage, CryptoDetails, Cryptocurrencies, News, Exchanges } from './components'
 import "./App.css";
+import moment from "moment";
+import { CopyrightOutlined } from '@ant-design/icons';
 
 
 const App = () => {
@@ -16,38 +18,49 @@ const App = () => {
         <Layout>
 
           <div className="routes">
-            <Switch>
+            <Routes>
 
-              <Routes ecact path="/">
-                <Homepage />
-              </Routes>
-
-              <Routes ecact path="/exchanges">
-                <Exchanges />
-              </Routes>
-
-              <Routes ecact path="/cryptocurrencies">
-                <Cryptocurrencies />
-              </Routes>
-
-              <Routes ecact path="/crypto/:coinId">
-                <CryptoDetails />
-              </Routes>
-
-              <Routes ecact path="/news">
-                <News />
-              </Routes>
+              <Route path="/" element={<Homepage />} />
 
 
-            </Switch>
+
+              <Route path="/exchanges" element={<Exchanges />} />
+
+
+
+              <Route path="/cryptocurrencies" element={<Cryptocurrencies />} />
+
+
+
+              <Route path="/crypto/:coinId" element={<CryptoDetails />} />
+
+
+
+              <Route path="/news" element={<News />} />
+
+
+
+            </Routes>
 
           </div>
 
         </Layout>
 
 
+        <div className="footer">
+
+          <Typography.Title  level={5} style={{color: 'white'}}>
+            Kryptodesk  <CopyrightOutlined />  {moment().format('YYYY ')}
+            All right reserved
+          </Typography.Title>
+
+          <Space>
+            <Link to="/"> Home</Link>
+            <Link to="/exchanges"> Exchange</Link>
+            
+          </Space>
+        </div>
       </div>
-      <div className="footer"></div>
     </div>
   )
 }
